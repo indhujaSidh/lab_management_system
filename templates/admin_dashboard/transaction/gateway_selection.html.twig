@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payment Gateway Select{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="mt-4 col-md-12">
+                        <h5 class="card-title">ගෙවීමේ දොරටුව තෝරන්න</h5>
+                        <div class="mt-4 mb-4">
+                            <a href="{{ url('transaction_level_payment_pay', {id: id}) }}"><img
+                                        src="{{ asset('base/img/payhere_square_banner.png') }}" alt="PayHere" width="180"/></a>
+                        </div>
+                        <p class="card-text">ගනුදෙනුව කිරීමට ප්‍රථම, ඔබගේ බැංකු ගිණුම මාර්ගගත සේවාවන්ට සක්‍රීය බව තහවුරු කරගන්න.</p>
+                        <p class="card-text">වැඩි විස්තර සඳහා ඔබගේ බැංකුව හා සම්බන්ධ වන්න.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

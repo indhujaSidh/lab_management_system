@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <!-- ======= Header ======= -->
+    {% include 'admin_dashboard/base/header.html.twig' %}
+
+    <!-- ======= Left Sidebar ======= -->
+    {% include 'admin_dashboard/base/left-side-menu.html.twig' %}
+    {% block floating_summary %}
+    {% endblock %}
+
+    <main id="main" class="main">
+        <!-- Page content -->
+        {% block page_content %}
+        {% endblock page_content %}
+    </main><!-- End #main -->
+
+
+
+
+    <!-- ======= Footer ======= -->
+    {% include 'admin_dashboard/base/footer.html.twig' %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('base') }}
+    {% endblock %}
+
+{% endblock body %}

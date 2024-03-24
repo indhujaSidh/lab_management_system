@@ -1,0 +1,193 @@
+<!-- ======= Sidebar ======= -->
+{% block stylesheets %}
+    <style>
+        .nav-item.active a {
+            background-color: #BA1660;
+            color: #fff;
+        }
+
+        .nav-item.active i {
+            color: #911a6c;
+        }
+
+        .rounded-circle {
+            width: 25%;
+        }
+
+        .admin {
+            color: #9C9FA6;
+        }
+
+        .check {
+            color: #58d8a3 !important;
+            font-size: 11px !important;
+        }
+    </style>
+{% endblock %}
+{% set currentRoute = app.request.attributes.get('_route') %}
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav mt-2" id="sidebar-nav">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="{{ asset('nice-admin/assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle"/>
+            &nbsp;
+            <span class="d-none d-md-block ps-2 admin">
+                {% if app.user %}
+                    {{ app.user.firstName }} {{ app.user.lastName }}
+                {% endif %}
+                <i class="bi bi-bookmark-check-fill check"></i></span>
+        </a>
+
+        <hr>
+
+
+        {% if is_granted('ROLE_VIEW_DASHBOARD') %}
+            <li class="nav-item {% if app.request.requestUri == path('admin_dashboard') %}active{% endif %} mt-4">
+                <a class="nav-link collapsed" href="{{ path('admin_dashboard') }}">
+                    <i class="bi bi-speedometer2"></i>
+                    &nbsp
+                    <span>Dashboard</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_VIEW_AND_EDIT_PATIENT_PROFILE') %}
+            <li class="nav-item {% if app.request.requestUri == path('edit_patient_profile') %}active{% endif %}">
+                <a class="nav-link collapsed" href="{{ path('edit_patient_profile') }}">
+                    <i class="bi bi-person-circle"></i>
+                    &nbsp
+                    <span>Profile</span>
+                </a>
+            </li>
+        {% endif %}
+
+
+        {% if is_granted('ROLE_VIEW_PATIENTS_APPOINTMENTS') %}
+            <li class="nav-item {% if app.request.requestUri == path('my_appointments_list') %}active{% endif %}">
+                <a class="nav-link collapsed" href="{{ path('my_appointments_list') }}">
+                    <i class="bi bi-calendar-check"></i>
+                    &nbsp
+                    <span>My Appointments</span>
+                </a>
+            </li>
+        {% endif %}
+
+
+
+        {% if is_granted('ROLE_VIEW_ADD_EDIT_DOCTOR') %}
+            <li class="nav-item {% if app.request.requestUri == path('dashboard_doctors_list') %}active{% endif %}">
+                <a class="nav-link collapsed" href="{{ path('dashboard_doctors_list') }}">
+                    <i class="bi bi-person"></i>
+                    &nbsp
+                    <span>Doctors</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_VIEW_ADD_EDIT_BACKEND_USERS') %}
+        <li class="nav-item {% if app.request.requestUri == path('backend_users_list') %}active{% endif %}">
+            <a class="nav-link collapsed" href="{{ path('backend_users_list') }}">
+                <i class="bi bi-person-gear"></i>
+                &nbsp
+                <span>Backend users</span>
+            </a>
+        </li>
+        {% endif %}
+
+
+        <!-- Start code  Nav -->
+        {% if is_granted('ROLE_ADD_EDIT_TEST_INFO') %}
+        <li class="nav-item">
+            {% set mallRouteList = ['test_category','dashboard_tests_list'] %}
+            <a class="nav-link {% if currentRoute not in mallRouteList %}collapsed{% endif %}"
+               data-bs-target="#mall-nav" data-bs-toggle="collapse" href="#"
+               aria-expanded="{% if currentRoute in mallRouteList %}true{% else %}false{% endif %}">
+                <i class="bi bi-droplet-half"></i>
+                &nbsp
+                <span>Tests</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="mall-nav" class="nav-content collapse {% if currentRoute in mallRouteList %}show{% endif %}"
+                data-bs-parent="#sidebar-nav" style="">
+                {% if is_granted('ROLE_VIEW_ADD_EDIT_TEST_CATEGORY') %}
+                <li>
+                    <a class="{% if currentRoute in ['test_category'] %} active {% endif %}"
+                       href="{{ path('test_category') }}">
+                        <i class="bi bi-list"></i><span>Category</span>
+                    </a>
+                </li>
+                {% endif %}
+
+
+
+                {% if is_granted('ROLE_VIEW_ADD_EDIT_TEST_INFO') %}
+                <li>
+                    <a class="{% if currentRoute in ['dashboard_tests_list'] %} active {% endif %}"
+                       href="{{ path('dashboard_tests_list') }}">
+                        <i class="bi bi-file-text"></i><span>Tests</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </li>
+        {% endif %}
+
+
+
+
+        {% if is_granted('ROLE_VIEW_APPOINTMENT_REQUEST') %}
+        <li class="nav-item {% if app.request.requestUri == path('appointment_requests') %}active{% endif %}">
+            <a class="nav-link collapsed" href="{{ path('appointment_requests') }}">
+                <i class="bi bi-chat-dots"></i>
+                &nbsp
+                <span>Appointment Requests</span>
+            </a>
+        </li>
+        {% endif %}
+
+
+        {% if is_granted('ROLE_PLACE_APPOINTMENT') %}
+        <li class="nav-item {% if app.request.requestUri == path('admin_make_appointment') %}active{% endif %}">
+            <a class="nav-link collapsed" href="{{ path('admin_make_appointment') }}">
+                <i class="bi bi-calendar-plus"></i>
+                &nbsp
+                <span>Make Appointment</span>
+            </a>
+        </li>
+        {% endif %}
+
+
+        {% if is_granted('ROLE_VIEW_APPOINTMENT') %}
+        <li class="nav-item {% if app.request.requestUri == path('appointment_list') %}active{% endif %}">
+            <a class="nav-link collapsed" href="{{ path('appointment_list') }}">
+                <i class="bi bi-list-check"></i>
+                &nbsp
+                <span>Appointment List</span>
+            </a>
+        </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_VIEW_AND_UPLOAD_TEST_RESULTS') %}
+        <li class="nav-item {% if app.request.requestUri == path('test_results_overView') %}active{% endif %}">
+            <a class="nav-link collapsed" href="{{ path('test_results_overView') }}">
+                <i class="bi bi-cloud-upload"></i>
+                &nbsp
+                <span>Upload Test Results</span>
+            </a>
+        </li>
+        {% endif %}
+
+
+        {% if is_granted('ROLE_VIEW_PATIENTS_LIST') %}
+            <li class="nav-item {% if app.request.requestUri == path('patient_list_view') %}active{% endif %}">
+                <a class="nav-link collapsed" href="{{ path('patient_list_view') }}">
+                    <i class="bi bi-people"></i>
+                    &nbsp
+                    <span>Patients List</span>
+                </a>
+            </li>
+        {% endif %}
+
+
+    </ul>
+
+</aside>
+

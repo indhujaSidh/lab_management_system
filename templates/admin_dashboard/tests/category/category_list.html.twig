@@ -1,0 +1,79 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('test_category') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            <div class="title-and-button">
+                <span class="title">Test Category</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="contact-button add-new-test-category">
+                    <i class="fa fas fa-plus contact-button__icon"></i>
+                </button>
+            </div>
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body aligned-body">
+                        <div class="card-datatable table-responsive pt-0 m-2">
+                            <table class="datatables-basic table table-hover border-bottom" id="table_category_list">
+                                <thead>
+                                <tr class="text text-al">
+                                    <th class="col col-sm-9">Name</th>
+                                    <th class="col col-sm-1 text-center">Active/Inactive</th>
+                                    <th class="col col-sm-2 text-center">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for category in categories %}
+                                    <tr>
+                                        <td>{{ category.name }}</td>
+                                        <td class="text-center">
+                                            {% if category.isActive == true %}
+                                                <div class="form-switch">
+                                                    <input class="is-active-btn form-check-input" type="checkbox"
+                                                           value="{{ category.id }}" checked>
+                                                </div>
+                                            {% endif %}
+                                            {% if not category.isActive %}
+                                                <div class="form-switch">
+                                                    <input class="is-active-btn form-check-input" type="checkbox"
+                                                           value="{{ category.id }}">
+                                                </div>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center">
+                                            <a type="button" title="Edit"
+                                               href="{{ path('edit_backend_user',{id:category.id}) }}"><i
+                                                        class="fa fa-pen edit-icon" aria-hidden="true"></i></a>
+                                            &nbsp;&nbsp;
+                                            <button type="button" class="delete-backend_user trash-icon"
+                                                    value="{{ category.id }}"
+                                                    title="Delete"><i class="fa fa-trash delete-icon"
+                                                                      aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+     {% include 'admin_dashboard/tests/category/category_form.html.twig' %}
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('test_category') }}
+    <script>
+         let ajax_test_category_form = "{{ path('ajax_test_category_form') }}"
+        {# let ajax_city_list = "{{ path('ajax_city_list_action') }}" #}
+        {# let ajax_change_city_active_status = "{{ path('ajax_change_city_active_status') }}" #}
+        {# let ajax_city_form = "{{ path('ajax_city_form') }}" #}
+    </script>
+
+{% endblock %}

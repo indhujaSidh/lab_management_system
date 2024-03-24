@@ -1,0 +1,28 @@
+{% extends "./main_web/web_base.html.twig" %}
+
+{% block body %}
+
+    <!-- ======= topbar ======= -->
+    {% include 'main_web/base/top_bar.html.twig' %}
+
+    <!-- ======= Nav Bar ======= -->
+    {% include 'main_web/base/nav_bar.html.twig' %}
+
+
+
+        <!-- Page content -->
+        {% block page_content %}
+        {% endblock page_content %}
+
+
+
+
+
+    <!-- ======= Footer ======= -->
+    {% include 'main_web/base/web_footer.html.twig' %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('base') }}
+    {% endblock %}
+
+{% endblock body %}

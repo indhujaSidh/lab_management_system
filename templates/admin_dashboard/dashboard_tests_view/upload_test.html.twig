@@ -1,0 +1,87 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('upload_report') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            <span class="title">{{ appointment_ref }}</span>
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="shopForm">
+                            {{ form_start(form) }}
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col col-md-6">
+                                        <label for="name" class="form-label">Test</label><span><small
+                                                    class="text-warning">*</small></span>
+                                        {{ form_widget(form.test, {'attr':{'class':"form-control patient-select"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(form.test) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <label for="code" class="form-label">Sample Collected
+                                            (referred)</label>
+                                        {{ form_widget(form.sampleCollected, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(form.sampleCollected) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <label for="code" class="form-label">Ready Date</label>
+                                        {{ form_widget(form.readyDate, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(form.readyDate) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col col-md-6">
+                                        <label for="isActive" class="form-label">Comments</label>
+                                        {{ form_widget(form.comments, {'attr':{'class':"form-control",'row':4}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(form.comments) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <label for="code" class="form-label">Printed Date</label><span><small
+                                                    class="text-warning">*</small></span>
+                                        {{ form_widget(form.printedDate, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(form.printedDate) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <label for="code" class="form-label">Technician</label>
+                                        {{ form_widget(form.technician, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(form.technician) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col col-md-3">
+                                        {{ form_widget(form.reportFile, {'attr':{'class':""}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(form.reportFile) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrap float-end mt-4">
+                                    {{ form_widget(form.submit, {'label': 'Save', 'attr':{'class':'btn btn-submit float-end'}}) }}
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('upload_report') }}
+{% endblock %}

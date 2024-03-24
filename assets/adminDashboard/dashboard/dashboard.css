@@ -1,0 +1,104 @@
+
+.card.card-img-holder {
+    position: relative;
+}
+
+.stretch-card > .card {
+    width: 100%;
+    min-width: 100%;
+}
+
+.card{
+    min-height: 6px !important;
+}
+
+.card .card-body {
+    padding: 2rem 2rem;
+}
+
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    margin-top: 10px !important;
+}
+
+.card.card-img-holder .card-img-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+}
+
+.first-section-body{
+    background-color: white;
+    border-radius: 8px;
+    height: 330px;
+    padding-top: 10px !important;
+}
+
+.gray-font{
+    color: #9A9A9D;
+    font-size: 12px;
+}
+.dashboard-title-font{
+    font-size: 13px;
+}
+
+.br {
+    display: block;
+    margin-bottom: -.5em;
+}
+
+.btn-report{
+    width: 125px;
+    font-family: "ubuntu-regular", sans-serif;
+    font-size: 11px !important;
+    font-weight: 500;
+    color: #fff;
+    background-color: #482B76;
+    border: #482B76;
+    border-radius: 5px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    padding: 8px;
+}
+
+.round-icon-image{
+    width: 40px !important;
+}
+
+.doughnut-chart{
+    height: 165px !important;
+    width: 179px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 20px !important;
+}
+
+.dashboard-info-card{
+    margin-bottom: 15px !important;
+    height: 130px !important;
+}
+
+.bio-row{
+    width: 100% !important;
+}
+
+.bio-row p span {
+    /*width: ;*/
+}
+.total-summary-chart,
+.third-section-body{
+    min-height: 350px;
+}
+
+.dashboard-first-section-icon{
+    margin-top: 30px;
+}
+
+
+

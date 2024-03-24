@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('payment_details') }}
+{% endblock %}
+
+{% block body %}
+    <div id="card" class="animated fadeIn">
+        <div id='lower-side'>
+            <div class="text-center">
+                <img src="{{ asset('web/logo.png') }}" style="align-items: center;width: fit-content" >
+            </div>
+            <hr>
+            <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
+                <input type="hidden" name="merchant_id" value="{{ payhere_merchant_id }}">
+                <input type="hidden" name="return_url" value="{{ url('transaction_payment_return_url') }}">
+                <input type="hidden" name="cancel_url"
+                       value="{{ url('transaction_payment_cancel_url',{'order_id':transaction.id }) }}">
+                <input type="hidden" name="notify_url" value="{{ url('transaction_payment_notify_url') }}">
+                <div class="row">
+                    <div class="col col-md-4">
+                        <label class="header-label">Appointment Ref No</label>
+                    </div>
+                    <div class="col col-md-1">
+                        <label class="header-label">:</label>
+                    </div>
+                    <div class="col col-md-7">
+                        <label class="info-label">{{ transaction.appointmentId.refNo }}</label>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col col-md-4">
+                        <label class="header-label">Amount</label>
+                    </div>
+                    <div class="col col-md-1">
+                        <label class="header-label">:</label>
+                    </div>
+                    <div class="col col-md-7">
+                        <label class="info-label">{{ transaction.appointmentId.amount|number_format(2) }} LKR</label>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col col-md-4">
+                        <label class="header-label">First Name</label>
+                    </div>
+                    <div class="col col-md-1">
+                        <label class="header-label">:</label>
+                    </div>
+                    <div class="col col-md-7">
+                        <label class="info-label">{{ transaction.appointmentId.patientId.firstName }}</label>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col col-md-4">
+                        <label class="header-label">Last Name</label>
+                    </div>
+                    <div class="col col-md-1">
+                        <label class="header-label">:</label>
+                    </div>
+                    <div class="col col-md-7">
+                        <label class="info-label">{{ transaction.appointmentId.patientId.lastName }}</label>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col col-md-4">
+                        <label class="header-label">Contact Number</label>
+                    </div>
+                    <div class="col col-md-1">
+                        <label class="header-label">:</label>
+                    </div>
+                    <div class="col col-md-7">
+                        <label class="info-label">{{ transaction.appointmentId.patientId.contactNumber }}</label>
+                    </div>
+                </div>
+                <input type="hidden" name="items" value="image">
+                <input type="hidden" name="order_id" value="{{ transaction.id }}">
+                <input type="hidden" name="first_name" value="{{ transaction.appointmentId.patientId.firstName }}">
+                <input type="hidden" name="last_name" value="{{ transaction.appointmentId.patientId.lastName }}">
+                <input type="hidden" name="email" value="{{ transaction.appointmentId.patientId.email }}">
+                <input type="hidden" name="currency" value="LKR">
+                <input type="hidden" name="amount" value="{{ transaction.appointmentId.amount }}">
+                <input type="hidden" name="contactNo" value="{{ transaction.appointmentId.patientId.contactNumber }}">
+                {#                                    </br></br>Customer Details</br> #}
+                <input type="hidden" name="address" value="123 Galle Road">
+                <input type="hidden" name="city" value="Colombo 3">
+                <input type="hidden" name="country" value="Sri Lanka">
+                <input type="hidden" name="custom_1" value="{{ transaction.identification }}">
+                <input type="hidden" name="hash" value="{{ hash }}">
+                <div class="row mt-4">
+                    <div class="col col-md-6">
+                        <input type="hidden" name="transaction-id" id="transactionId" value="{{ transaction.id }}">
+                        <a href="{{ path('my_appointments_list') }}" class="btn btn-secondary" id="cancel-btn">Cancel</a>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="submit-btn">
+                            <input type="submit" id="contBtn" value="Confirm" class="btn">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('payment_details') }}
+{% endblock %}

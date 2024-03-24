@@ -1,0 +1,51 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('patient_appointment') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            <div class="title-and-button">
+                <span class="title">My Appointments List</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success pt-1 pb-1 pr-2 pl-2 m-0" role="alert" data-mdb-color="success">
+                        <i class="fas fa-check-circle me-3"></i>{{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-datatable table-responsive pt-0 m-2">
+                            <table class="datatables-basic table table-hover border-bottom" id="table_my_appointment_list">
+                                <thead>
+                                <tr class="text text-al">
+                                    <th class="col-md-4 text-center">Appointment Ref No</th>
+                                    <th class="col-md-2">Ref Doctor</th>
+                                    <th class="col-md-2">Time Slot</th>
+                                    <th class="col-md-1">Amount</th>
+                                    <th class="col-md-2">Payment Status</th>
+                                    <th class="col-md-1">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('patient_appointment') }}
+    <script>
+        let ajax_my_appointment_list = "{{ path('ajax_my_appointment_list') }}"
+        let patient_test_results = "{{ path('patient_test_results') }}"
+    </script>
+{% endblock %}

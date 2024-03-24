@@ -1,0 +1,86 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('doctor_form') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            {% if isNew %}
+                <span class="title">Add New Doctor</span>
+            {% else %}
+                <span class="title">Edit Doctor Info</span>
+            {% endif %}
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="shopForm">
+                            {{ form_start(formDoctor) }}
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col col-md-6">
+                                        <label for="name" class="form-label">First Name</label><span><small
+                                                    class="text-warning">*</small></span>
+                                        {{ form_widget(formDoctor.firstName, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formDoctor.firstName) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-6">
+                                        <label for="code" class="form-label">Last Name</label><span><small
+                                                    class="text-warning">*</small></span>
+                                        {{ form_widget(formDoctor.lastName, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formDoctor.lastName) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col col-md-6">
+                                        <label for="code" class="form-label">Specialization</label>
+                                        {{ form_widget(formDoctor.specialization, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formDoctor.specialization) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-6">
+                                        <label for="isActive" class="form-label">Email</label><span><small
+                                                    class="text-warning">*</small></span>
+                                        {{ form_widget(formDoctor.email, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formDoctor.email) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col col-md-6">
+                                    <label for="code" class="form-label">ContactNo</label>
+                                    {{ form_widget(formDoctor.contactNumber, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formDoctor.contactNumber) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mt-4">
+                                    <label for="isActive" class="form-label">Active Status</label>
+                                    {{ form_widget(formDoctor.isActive, {'attr':{'class':"form-check-input"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formDoctor.isActive) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrap float-end mt-5">
+                                {{ form_widget(formDoctor.submit, {'label': 'Save', 'attr':{'class':'btn btn-submit float-end'}}) }}
+                            </div>
+                            {{ form_end(formDoctor) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('doctor_form') }}
+{% endblock %}

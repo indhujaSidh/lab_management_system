@@ -1,0 +1,107 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('appointment_form') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            {% if isNew %}
+                <span class="title">Add New Appointment</span>
+            {% else %}
+                <span class="title">Edit Appointment Info</span>
+            {% endif %}
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="shopForm">
+                            {{ form_start(formAppointment) }}
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col col-md-6">
+                                        <label for="name" class="form-label">Patient</label><span><small
+                                                    class="text-warning">*</small></span>
+                                        {{ form_widget(formAppointment.patient, {'attr':{'class':"form-control patient-select"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formAppointment.patient) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <label for="code" class="form-label">Registered Doctor
+                                            (referred)</label>
+                                        {{ form_widget(formAppointment.doctor, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formAppointment.doctor) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <label for="code" class="form-label">Referred Doctor</label>
+                                        {{ form_widget(formAppointment.refDoctor, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formAppointment.refDoctor) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col col-md-3">
+                                        <label for="code" class="form-label">Time Slot</label><span><small
+                                                    class="text-warning">*</small></span>
+                                        {{ form_widget(formAppointment.timeSlot, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formAppointment.timeSlot) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <label for="isActive" class="form-label">Sample Collected Date</label>
+                                        {{ form_widget(formAppointment.sampleCollected, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formAppointment.sampleCollected) }}
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-6">
+                                        <label for="code" class="form-label">Payment Status</label>
+                                        {{ form_widget(formAppointment.paymentStatus, {'attr':{'class':"form-control"}}) }}
+                                        <div class="form-error">
+                                            {{ form_errors(formAppointment.paymentStatus) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="testsList mt-3">
+                                    <label for="name" class="form-label">Tests</label>
+                                    <ul class="tests" style="list-style: none; margin: 0; padding: 0;" data-prototype="
+                                        {% apply escape %}
+                                                 {{ include('admin_dashboard/appointment/add_test.html.twig', { 'tests': formAppointment.tests.vars.prototype }) }}
+                                        {% endapply %}">
+                                        {% for key, test in formAppointment.tests %}
+                                            <li>
+                                                <div class="row mt-3 testsDelete">
+                                                    <div class="col col-md-4 mb-3">
+                                                        {{ form_widget(test.testName, {'attr':{'class':"form-control"}}) }}
+                                                        <div class="form-error">
+                                                            {{ form_errors(test.testName) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="wrap float-end mt-5">
+                                {{ form_widget(formAppointment.submit, {'label': 'Save', 'attr':{'class':'btn btn-submit float-end'}}) }}
+                            </div>
+                            {{ form_end(formAppointment) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('appointment_form') }}
+    <script>
+        let ajax_auto_complete_user_contacts = "{{ path('ajax_auto_complete_user_contacts') }}"
+    </script>
+{% endblock %}

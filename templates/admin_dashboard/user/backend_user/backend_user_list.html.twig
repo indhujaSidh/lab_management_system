@@ -1,0 +1,106 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('backend_users_list') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            <div class="title-and-button">
+                <span class="title">Backend Users List</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                {#                {% if is_granted('ROLE_ADD_NEW_DOCTOR') %} #}
+                <a class="contact-button" href="{{ path('add_new_backend_user') }}">
+                    <i class="fa fas fa-plus contact-button__icon"></i>
+                </a>
+                {#                {% endif %} #}
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success pt-1 pb-1 pr-2 pl-2 m-0" role="alert" data-mdb-color="success">
+                        <i class="fas fa-check-circle me-3"></i>{{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-datatable table-responsive pt-0 m-2">
+                            <table class="datatables-basic table table-hover border-bottom"
+                                   id="table_backend_users_list">
+                                <thead>
+                                <tr class="text text-al">
+                                    <th class="col-md-3">Name</th>
+                                    <th class="col-md-2">Role</th>
+                                    <th class="col-md-2">Email</th>
+                                    <th class="col-md-2 text-center">CreatedAt</th>
+                                    <th class="col-md-1 text-center">IsActive</th>
+                                    <th class="col-md-2 text-center">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.firstName }} &nbsp; {{ user.lastName }}</td>
+                                        <td>
+                                            {{ user.role.name }}
+                                        </td>
+                                        <td>
+                                            {{ user.email }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{ user.createdAt.format('Y-m-d H:i:s') }}
+                                        </td>
+                                        <td class="text-center">
+                                            {#                                            {% if is_granted('ROLE_CHANGE_BACKEND_USER_ACTIVE_STATUS') %} #}
+                                            {% if user.isActive == true %}
+                                                <div class="form-switch">
+                                                    <input class="is-active-btn form-check-input" type="checkbox"
+                                                           value="{{ user.id }}" checked>
+                                                </div>
+                                            {% endif %}
+                                            {% if not user.isActive %}
+                                                <div class="form-switch">
+                                                    <input class="is-active-btn form-check-input" type="checkbox"
+                                                           value="{{ user.id }}">
+                                                </div>
+                                            {% endif %}
+                                            {#                                            {% else %} #}
+                                            {#                                                {% if user.isActive == true %} #}
+                                            {#                                                    <label class="badge badge-info">Active</label> #}
+                                            {#                                                {% endif %} #}
+                                            {#                                                {% if not user.isActive %} #}
+                                            {#                                                    <label class="badge badge-success">InActive</label> #}
+                                            {#                                                {% endif %} #}
+
+                                            {#                                            {% endif %} #}
+                                        </td>
+                                        <td class="text-center">
+                                            {#                                            {% if is_granted('ROLE_BACKEND_USER_EDIT_DELETE_ACTION') %} #}
+                                            <a type="button" title="Edit"
+                                               href="{{ path('edit_backend_user',{id:user.id}) }}"><i
+                                                        class="fa fa-pen edit-icon" aria-hidden="true"></i></a>
+                                            &nbsp;&nbsp;
+{#                                            <button type="button" class="delete-backend_user trash-icon"#}
+{#                                                    value="{{ user.id }}"#}
+{#                                                    title="Delete"><i class="fa fa-trash delete-icon"#}
+{#                                                                      aria-hidden="true"></i></button>#}
+                                            {#                                            {% endif %} #}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('backend_users_list') }}
+    <script>
+        let ajax_change_backend_user_active_status = "{{ path('ajax_change_backend_user_active_status') }}"
+    </script>
+{% endblock %}

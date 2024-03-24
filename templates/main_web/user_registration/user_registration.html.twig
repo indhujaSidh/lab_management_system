@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('user_registration') }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <section class="section">
+            {{ form_start(formUser, {'attr': {'class': 'user-registration-section'}}) }}
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body mt-2">
+                        <h4 class="text-center user-registration-title">User Registration</h4>
+                        <div class="row mt-4">
+                            <div class="col col-md-6">
+                                <label for="name" class="form-label">First Name</label><span><small
+                                            class="text-warning">*</small></span>
+                                {{ form_widget(formUser.firstName, {'attr':{'class':"form-control"}}) }}
+                                <div class="form-error">
+                                    {{ form_errors(formUser.firstName) }}
+                                </div>
+                            </div>
+                            <div class="col col-md-6">
+                                <label for="code" class="form-label">Last Name</label><span><small
+                                            class="text-warning">*</small></span>
+                                {{ form_widget(formUser.lastName, {'attr':{'class':"form-control"}}) }}
+                                <div class="form-error">
+                                    {{ form_errors(formUser.lastName) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col col-md-6">
+                                <label for="code" class="form-label">Date Of Birth</label>
+                                {{ form_widget(formUser.dob, {'attr':{'class':"form-control"}}) }}
+                                <div class="form-error">
+                                    {{ form_errors(formUser.dob) }}
+                                </div>
+                            </div>
+                            <div class="col col-md-6">
+                                <label for="code" class="form-label">Gender</label><span><small
+                                            class="text-warning">*</small></span>
+                                {{ form_widget(formUser.gender, {'attr':{'class':"form-control"}}) }}
+                                <div class="form-error">
+                                    {{ form_errors(formUser.gender) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col col-md-6">
+                                <label for="code" class="form-label">NIC</label><span><small
+                                            class="text-warning">*</small></span>
+                                {{ form_widget(formUser.nic, {'attr':{'class':"form-control"}}) }}
+                                <div class="form-error">
+                                    {{ form_errors(formUser.nic) }}
+                                </div>
+                            </div>
+                            <div class="col col-md-6">
+                                <label for="code" class="form-label">Contact No</label><span><small
+                                            class="text-warning">*</small></span>
+                                {{ form_widget(formUser.contactNumber, {'attr':{'class':"form-control"}}) }}
+                                <div class="form-error">
+                                    {{ form_errors(formUser.contactNumber) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-md-12">
+                            <label for="isActive" class="form-label">Email</label><span><small
+                                        class="text-warning">*</small></span>
+                            {{ form_widget(formUser.email, {'attr':{'class':"form-control"}}) }}
+                            <div class="form-error">
+                                {{ form_errors(formUser.email) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for password in formUser.password %}
+                                <div class="col col-md-6 mt-3">
+                                    <label for="FormControlInputCode"
+                                           class="form-label">{{ form_label(password) }}</label><span><small
+                                                class="text-warning">*</small></span>
+                                    {{ form_widget(password, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(password) }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="wrap float-end mt-4">
+                            {{ form_widget(formUser.submit, {'label': 'Save', 'attr':{'class':'btn btn-submit float-end'}}) }}
+                        </div>
+
+                    </div>
+                    {{ form_end(formUser) }}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+    {% block javascripts %}
+
+        {{ encore_entry_script_tags('user_registration') }}
+    {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'main_web/base/web_base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('web_landing_page') }}
+{% endblock %}
+{% block page_content %}
+    <section id="home">
+        {% include 'main_web/landing_page/carousel.html.twig' %}
+    </section>
+
+    <main id="main">
+        <!-- ======= Featured Services Section ======= -->
+        {% include 'main_web/landing_page/featured_services.html.twig' %}
+        <!-- End Featured Services Section -->
+
+        <!-- ======= Cta Section ======= -->
+        {% include 'main_web/landing_page/cta.html.twig' %}
+        <!-- End Cta Section -->
+
+        <!-- ======= About Us Section ======= -->
+        {% include 'main_web/landing_page/about_us.html.twig' %}
+        <!-- End About Us Section -->
+
+        <!-- ======= Services Section ======= -->
+        {% include 'main_web/landing_page/services.html.twig' %}
+        <!-- End Services Section -->
+
+        <!-- ======= Appointment Section ======= -->
+        {% include 'main_web/landing_page/appointment.html.twig' %}
+        <!-- End Appointment Section -->
+
+        <!-- ======= Contact Section ======= -->
+        {% include 'main_web/landing_page/contact_us.html.twig' %}
+        <!-- End Contact Section -->
+
+    </main>
+{% endblock page_content %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('web_landing_page') }}
+{% endblock %}

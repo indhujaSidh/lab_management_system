@@ -1,0 +1,55 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('pre_request_list') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            <div class="title-and-button">
+                <span class="title">Appointment Request Info</span>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success pt-1 pb-1 pr-2 pl-2 m-0" role="alert" data-mdb-color="success">
+                        <i class="fas fa-check-circle me-3"></i>{{ message }}
+                    </div>
+                {% endfor %}
+                <img id="file-icon" src="{{ asset('nice-admin/assets/img/fileIcon.png') }}" alt="Download" style="display: none;">
+            </div>
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-datatable table-responsive pt-0 m-2">
+                            <table class="datatables-basic table table-hover border-bottom" id="table_pre_request">
+                                <thead>
+                                <tr class="text text-al">
+                                    <th class="col col-sm-3">Name</th>
+                                    <th class="col col-sm-2">Contact No</th>
+                                    <th class="col col-sm-2">Doctor</th>
+                                    <th class="col col-sm-3">Processing State</th>
+                                    <th class="col col-sm-1 text-center">test File</th>
+                                    <th class="col col-sm-1 text-center">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('pre_request_list') }}
+    <script>
+        let ajax_get_pre_request_info = "{{ path('ajax_get_preRequest_list') }}"
+        let download_pre_request_file = "{{ path('download_pre_request_file') }}"
+        let edit_pre_request_info = "{{ path('view_pre_request') }}"
+    </script>
+
+{% endblock %}

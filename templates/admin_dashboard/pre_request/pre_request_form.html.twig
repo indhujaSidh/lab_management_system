@@ -1,0 +1,103 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('pre_request_view') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            <span class="title">View PreAppointment Request Info</span>
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="shopForm">
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label for="code" class="form-label">First Name</label>
+                                    {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'First Name'}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(form.firstName) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4 form-group mt-3 mt-md-0">
+                                    <label for="code" class="form-label">Last Name</label>
+                                    {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Last Name'}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(form.lastName) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4 form-group mt-3 mt-md-0">
+                                    <label for="code" class="form-label">Contact No</label>
+                                    {{ form_widget(form.contactNo, {'attr': {'class': 'form-control', 'placeholder': 'Contact Number'}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(form.contactNo) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group mt-3">
+                                    <label for="code" class="form-label">Email</label>
+                                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(form.email) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4 form-group mt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            <label for="code" class="form-label">Preferred Date</label>
+                                            {{ form_widget(form.preferredDate, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+                                            <div class="form-error">
+                                                {{ form_errors(form.preferredDate) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 form-group">
+                                            <label for="code" class="form-label">Preferred Time</label>
+                                            {{ form_widget(form.prefferedTime, {'attr': {'class': 'form-select', 'placeholder': 'Email'}}) }}
+                                            <div class="form-error">
+                                                {{ form_errors(form.prefferedTime) }}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 form-group mt-3">
+                                    <label for="code" class="form-label">Doctor</label>
+                                    {{ form_widget(form.doctor, {'attr': {'class': 'form-select', 'placeholder': 'Email'}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(form.doctor) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="code" class="form-label">Test Info</label>
+                                {{ form_widget(form.testsInfo, {'attr': {'class': 'form-control', 'placeholder': 'Tests To be performed','rows':'5'}}) }}
+                                <div class="form-error">
+                                    {{ form_errors(form.testsInfo) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="code" class="form-label">Processing State</label>
+                                {{ form_widget(form.processState, {'attr': {'class': 'form-select', 'placeholder': 'Email'}}) }}
+                                <div class="form-error">
+                                    {{ form_errors(form.processState) }}
+                                </div>
+                            </div>
+                            <div class="wrap float-end mt-5">
+                                {{ form_widget(form.submit, {'label': 'Save', 'attr':{'class':'btn btn-submit float-end'}}) }}
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('pre_request_view') }}
+{% endblock %}

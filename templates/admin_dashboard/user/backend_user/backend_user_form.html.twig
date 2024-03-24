@@ -1,0 +1,141 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('backend_user_form') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            {% if isNew %}
+                <span class="title">Add new backend user</span>
+            {% else %}
+                <span class="title">Edit user details</span>
+            {% endif %}
+            {{ form_start(formUser) }}
+            <div class="row mt-2 body-content">
+                <div class="col col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            {%  if userId is defined %}
+                                <input type="hidden" value="{{ userId }}" class="backend_user_id">
+                            {%  endif %}
+                            <p class="card-header-label">Personal Details</p>
+                            <hr class="line-breaker">
+                            <div class="row mt-3">
+                                <div class="col col-md-6">
+                                    <label for="name" class="form-label">First Name</label><span><small
+                                                class="text-warning">*</small></span>
+                                    {{ form_widget(formUser.firstName, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formUser.firstName) }}
+                                    </div>
+                                </div>
+                                <div class="col col-md-6">
+                                    <label for="code" class="form-label">Last Name</label><span><small
+                                                class="text-warning">*</small></span>
+                                    {{ form_widget(formUser.lastName, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formUser.lastName) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col col-md-6">
+                                    <label for="code" class="form-label">DOB</label>
+                                    {{ form_widget(formUser.dob, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formUser.dob) }}
+                                    </div>
+                                </div>
+                                <div class="col col-md-6">
+                                    <label for="code" class="form-label">Gender</label><span><small
+                                                class="text-warning">*</small></span>
+                                    {{ form_widget(formUser.gender, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formUser.gender) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col col-md-6">
+                                    <label for="code" class="form-label">NIC</label>
+                                    {{ form_widget(formUser.nic, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formUser.nic) }}
+                                    </div>
+                                </div>
+                                <div class="col col-md-6">
+                                    <label for="code" class="form-label">Contact No</label><span><small
+                                                class="text-warning">*</small></span>
+                                    {{ form_widget(formUser.contactNumber, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formUser.contactNumber) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col col-md-6">
+                                    <label for="isActive" class="form-label">Email</label><span><small
+                                                class="text-warning">*</small></span>
+                                    {{ form_widget(formUser.email, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formUser.email) }}
+                                    </div>
+                                </div>
+                                <div class="col col-md-6">
+                                    <label for="code" class="form-label">Role</label><span><small
+                                                class="text-warning">*</small></span>
+                                    {{ form_widget(formUser.role, {'attr':{'class':"form-control"}}) }}
+                                    <div class="form-error">
+                                        {{ form_errors(formUser.role) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-header-label">Login Credentials
+{#                                {% if is_granted('ROLE_RESET_BACKEND_USER_PASSWORD') %}#}
+                                    {% if not isNew %}
+                                        <span class="float-end reset-password">Reset Password</span>
+                                    {% endif %}
+{#                                {% endif %}#}
+                            </p>
+                            <hr class="line-breaker">
+                            <div class="login-section p-lg-4 pt-0">
+                                {% if formUser.password is defined %}
+                                    {% for password in formUser.password %}
+                                        <div class="col col-md-12 mt-3">
+                                            <label for="FormControlInputCode"
+                                                   class="form-label">{{ form_label(password) }}</label><span><small
+                                                        class="text-warning">*</small></span>
+                                            {{ form_widget(password, {'attr':{'class':"form-control"}}) }}
+                                            <div class="form-error">
+                                                {{ form_errors(password) }}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <div class="wrap float-end mt-4">
+                                    {{ form_widget(formUser.submit, {'label': 'Save', 'attr':{'class':'btn btn-submit float-end'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(formUser) }}
+        </section>
+    </div>
+    {%  include 'admin_dashboard/user/backend_user/password_reset_modal.html.twig' %}
+{% endblock page_content %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('backend_user_form') }}
+    <script>
+        let ajax_backend_user_reset_password = "{{ path('ajax_reset_backend_user_password') }}";
+    </script>
+{% endblock %}

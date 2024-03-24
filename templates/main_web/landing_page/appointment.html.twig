@@ -1,0 +1,94 @@
+<section id="appointment" class="appointment section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Make an Appointment</h2>
+            <p>Booking your appointment at AutomicLab is simple and convenient. Whether you need to schedule a routine
+                blood test, diagnostic imaging study, or specialized screening, we're here to help. Simply fill out our
+                online appointment request form or give us a call, and our friendly staff will assist you in finding a
+                convenient appointment time that fits your schedule. With flexible scheduling options and prompt
+                service, we strive to make the appointment booking process as seamless as possible. Take the first step
+                towards prioritizing your health and book your appointment with us today.</p>
+        </div>
+
+        {{ form_start(formAppointment) }}
+        {% for message in app.flashes('success') %}
+            <div class="appointment-success-message mb-2">
+                <div class="sent-message" style="color: red">Your appointment request has been sent successfully. Thank
+                    you!
+                </div>
+            </div>
+        {% endfor %}
+        <form class="appointment-form">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    {{ form_widget(formAppointment.firstName, {'attr': {'class': 'form-control', 'placeholder': 'First Name *'}}) }}
+                    <div class="form-error">
+                        {{ form_errors(formAppointment.firstName) }}
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    {{ form_widget(formAppointment.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Last Name *'}}) }}
+                    <div class="form-error">
+                        {{ form_errors(formAppointment.lastName) }}
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    {{ form_widget(formAppointment.contactNo, {'attr': {'class': 'form-control', 'placeholder': 'Contact Number *'}}) }}
+                    <div class="form-error">
+                        {{ form_errors(formAppointment.contactNo) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group mt-3">
+                    {{ form_widget(formAppointment.email, {'attr': {'class': 'form-control', 'placeholder': 'Email *'}}) }}
+                    <div class="form-error">
+                        {{ form_errors(formAppointment.email) }}
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mt-3">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            {{ form_widget(formAppointment.preferredDate, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+                            <div class="form-error">
+                                {{ form_errors(formAppointment.preferredDate) }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            {{ form_widget(formAppointment.prefferedTime, {'attr': {'class': 'form-select', 'placeholder': 'Email'}}) }}
+                            <div class="form-error">
+                                {{ form_errors(formAppointment.prefferedTime) }}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mt-3">
+                    {{ form_widget(formAppointment.doctor, {'attr': {'class': 'form-select', 'placeholder': 'Email'}}) }}
+                    <div class="form-error">
+                        {{ form_errors(formAppointment.doctor) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                {{ form_widget(formAppointment.testsInfo, {'attr': {'class': 'form-control', 'placeholder': 'Tests To be performed','rows':'5'}}) }}
+                <div class="form-error">
+                    {{ form_errors(formAppointment.testsInfo) }}
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="isActive" class="form-label">Test Requisition File</label>
+                {{ form_widget(formAppointment.testRequisitionFilename) }}
+            </div>
+            <div class="text-center">
+                {{ form_widget(formAppointment.submit, {'label': 'Make an Appointment','attr':{'class':'appointment-submit-btn'}}) }}
+            </div>
+        </form>
+        {{ form_end(formAppointment) }}
+
+    </div>
+</section>

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('payment_fail') }}
+{% endblock %}
+
+{% block body %}
+    <div id='card' class="animated fadeIn">
+        <div id='upper-side'>
+            <h3 id='status'>
+                <i class="fa fa-times fa-2xl" style="color: #ffffff;"></i>
+                <br><br>
+                Payment Failed !
+            </h3>
+        </div>
+        <div id='lower-side'>
+            <p>Hi {{ transaction.appointmentid.patientId.firstName }},</p>
+            <p>We Couldn't process your payment!</p>
+            <br>
+            <p>
+                <strong> Appointment Ref No: {{ transaction.appointmentid.refNo }} </strong>
+            </p>
+            <a href="{{ path('my_appointments_list') }}" class="btn btn-sm" style="background: #E41D30 !important;border: #E41D30 !important;color: white">Back to Home</a>
+        </div>
+    </div>
+{% endblock%}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('payment_fail') }}
+{% endblock %}

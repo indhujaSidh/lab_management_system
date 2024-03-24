@@ -1,0 +1,29 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+
+twig:
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+
+fos_ck_editor:
+    # ...
+    base_path: "build/ckeditor"
+    js_path:   "build/ckeditor/ckeditor.js"
+    configs:
+        ckeditor:
+            #            alignment:
+            #                options: [ 'left', 'right' ]
+            #            toolbar: [
+            #                'alignment'
+            #            ]
+            extraPlugins: "font,justify"
+            contentsCss : 'font.css'
+            'font_names': 'serif;sans serif;monospace;cursive;fantasy;Lobster;'
+            #            'contentsCss': [ 'https://fonts.googleapis.com/css2?family=Lobster' ]
+            removeButtons : 'Underline,Subscript,Superscript,Image,Table,Insert Special Character,Source,Link,Cut,Copy,Anchor,About CKEditor4 '
+
+
+
+
+
+

@@ -1,0 +1,577 @@
+body {
+    background-color: lightgray;
+}
+
+.edit-icon{
+    background: none;
+    border: none;
+    color:  #3FBABF !important;
+}
+
+.delete-icon{
+    color: #838383!important;
+    background: none;
+    border: none;
+}
+
+.gradient{
+    background: linear-gradient(to right, #da8cff, #9a55ff);
+}
+
+.login-logo{
+    width:30%
+}
+
+.login-title{
+    color: #3FBABF;
+    font-weight: bold;
+}
+
+.error-message{
+    color: #1a9197;
+    font-size: 13px;
+    font-weight: 600;
+
+}
+
+.gradiant-btn{
+    background: linear-gradient(to right, #1a9197, #838383);
+    border: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bg-gradient-danger {
+    /*background: -webkit-gradient(linear, left top, right top, from(#8475CC), to(#46C5F1)) !important;*/
+    /*background: linear-gradient(to right, #8475CC, #46C5F1) !important;*/
+    background: -webkit-gradient(linear, left top, right top, from(#84d9d2), to(#07cdae)) !important;
+    background: linear-gradient(to right, #84d9d2, #07cdae) !important;
+}
+.dashboard-card{
+    padding: 2.5rem 2.5rem;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+
+.bg-gradient-info {
+    background: -webkit-gradient(linear, left top, right top, from(#3FBABF), color-stop(99%, #8475CC)) !important;
+    background: linear-gradient(to right, #3FBABF, #8475CC 99%) !important;
+}
+
+.bg-gradient-success {
+    background: -webkit-gradient(linear, left top, right top, from(#C1539F), color-stop(99%, #E94988)) !important;
+    background: linear-gradient(to right, #C1539F, #E94988 99%) !important;
+
+}
+
+.bg-gradient-users {
+    background: -webkit-gradient(linear, left top, right top, from(#3498E8), color-stop(99%, #8CC8F8)) !important;
+    background: linear-gradient(to right, #3498E8, #8CC8F8 99%) !important;
+}
+
+
+.title{
+    font-size: 20px;
+    font-weight: 600;
+    color: #3FBABF;
+    font-family: "ubuntu-regular", sans-serif;
+    margin-top: 10px;
+}
+
+.table-body{
+    color: #5E7185;;
+}
+/*font-family: "ubuntu-regular", sans-serif;*/
+.dataTables_wrapper {
+    font-family: "ubuntu-regular", sans-serif;
+    font-size: 8px;
+}
+
+/* Change the font size */
+.dataTables_wrapper {
+    font-size: 14px;
+}
+
+.dataTables_wrapper table.dataTable tbody td {
+    color: #5E7185; /* Replace with the desired color */
+}
+
+.badge-info {
+    border: 1px solid #3FBABF;
+    color: #ffffff;
+    background: #3FBABF;
+}
+.badge-success {
+    border: 1px solid #48C300;
+    color: #ffffff;
+    background: #48C300;
+}
+.btn,
+.form-label {
+    font-size: 14px !important;
+    font-family: "ubuntu-regular", sans-serif;
+}
+
+.form-control {
+    font-size: 14px !important;
+    font-weight: normal !important;
+}
+
+
+.wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-submit {
+    width: 100px;
+    font-family: "ubuntu-regular", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #3FBABF;
+    border: #3FBABF;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-submit:hover
+{
+    background-color:  #838383;
+    color: white;
+}
+
+
+.badge-info-check {
+    color: #3FBABF;
+    font-size: 15px;
+}
+.badge-success-uncheck {
+    color: #8CA3B6;
+    font-size: 15px;
+}
+
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.notification i {
+    margin-right: 10px;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.delete-address-type,
+.delete-contact-type,
+.delete-currency-type,
+.delete-shop-type,
+.delete-vehicle-type,
+.delete-communication-type,
+.delete-brand-type,
+.delete-brand-category,
+.delete-brand,
+.delete-shop-category,
+.delete-shop,
+.delete-event-type,
+.delete-event-category,
+.delete-event,
+.trash-icon,
+.edit-button,
+.delete-city{
+    background: none;
+    border: none;
+}
+
+.close-model,
+.swal2-styled.swal2-cancel {
+    border: 2px solid #838383 !important;
+    border-radius: 0.25em ;
+    background: initial;
+    background-color: white !important;;
+    color: #838383 !important;
+    font-size: 1em;
+    box-shadow: none;
+}
+
+.save-model,
+.swal2-styled.swal2-confirm {
+    border: 2px solid #838383 !important;
+    border-radius: 0.25em;
+    background: linear-gradient(to right, #1a9197, #838383) !important;
+    color: white !important;
+    font-size: 1em;
+    box-shadow: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.swal2-cancel{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.swal2-icon.swal2-error {
+    border-color: #838383 !important;
+    color: #838383 !important;
+}
+.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+    background-color: #838383 !important;
+}
+
+.contact-button {
+    background-color: #3FBABF;
+    color: #fff;
+    padding: 0.5em 0.5em;
+    height: 0.5em; width: 0.5em;
+    border-radius: 100%;
+    bottom: 1rem;
+    right: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 6px #3FBABF;
+}
+.contact-button, .contact-button__icon {
+    transition: all 0.5s ease-in-out;
+}
+
+.contact-button:hover {
+    transform: scale(0.9);
+    box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 12px #3FBABF;
+    cursor: pointer;
+}
+
+.contact-button:hover .contact-button__icon {
+    transform:scale(1.5);
+}
+
+.title-and-button{
+    display: flex;
+    align-items: center;
+}
+.contact-button__icon{
+    font-size: 10px;
+}
+
+.swal2-styled {
+    box-shadow: none !important;
+}
+
+.brand-image{
+    width: 30px;
+}
+
+.brand-link{
+    color:#3FBABF;
+}
+
+.swal2-icon.swal2-info {
+    border-color: #838383 !important;
+    color: #838383 !important;
+}
+
+.form-error{
+    color: #DD3949;
+    font-weight: 500;
+}
+.form-error li{
+    list-style-type: none;
+}
+.form-error ul{
+    padding-left: 0px;
+}
+.view-option,
+.alert.alert-success {
+    margin-left: auto !important;
+}
+
+.vich-image img{
+    width: 60px;
+}
+
+.points{
+    background: none;
+    border: none;
+}
+
+
+.form-error,
+.text-purple{
+    color: #838383 !important;
+}
+
+.form-error li{
+    list-style-type: none;
+}
+.form-error ul{
+    padding-left: 0px;
+}
+
+
+.form-check-input:checked {
+    background-color: #3FBABF !important;
+    border-color: #3FBABF !important;
+}
+
+.delete-user{
+    color: #3FBABF !important;
+}
+
+
+table.dataTable tbody tr {
+    cursor: pointer;
+}
+
+.disabled-textfield{
+    pointer-events: none;
+    background-color: #f1f1f1;
+}
+
+.floating-summary{
+    box-shadow:2px 2px 10px #888;
+    width:65%;
+    height:100%;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    position:fixed;
+    top:0;
+    z-index:1050;
+    -webkit-transition:right 0.5s;
+    padding-bottom:10px
+}
+
+.summary{
+    height: 100px;
+}
+.bio-info {
+    color: #89817e;
+}
+
+.bio-row {
+    width: 50%;
+    float: left;
+    padding:0 20px;
+}
+
+.bio-row p span {
+    width: 120px;
+    display: inline-block;
+}
+
+.bio-row p{
+    font-size: 14px;
+}
+
+
+.summary-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 3em;
+    padding-left: 0.25em;
+    color: #3FBABF !important;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.couponUser thead tr{
+    font-size: 14px;
+    background-color: #D6CFE0;
+}
+
+.couponUser tbody tr{
+    font-size: 14px !important;
+    color: #89817e !important;
+}
+
+.row.title-points {
+    color: white;
+    display: flex !important;
+    justify-content: space-between; /* Adjust as needed */
+    align-items: center;
+    font-size: 14px
+}
+
+.view-icon{
+    background: none;
+    border: none;
+    color:  green !important;
+}
+
+.modal-backdrop{
+    width: 100%;
+    height: 100%
+}
+
+.nav-tabs-bordered .nav-link.active {
+    background-color: #fff;
+    color: #3FBABF !important;
+    border-bottom: 2px solid #3FBABF !important;
+    font-weight: bold;
+}
+
+.nav-tabs-bordered .nav-link:hover, .nav-tabs-bordered .nav-link:focus {
+    color: #3FBABF !important;
+}
+
+.brand-form-view{
+    display: table;
+    width: 100%;
+}
+
+.brand-form-view .brand-form-section {
+    display: table-cell;
+}
+
+.view-option-button{
+    color: #3FBABF;
+    font-size: 23px;
+    font-weight: bold;
+}
+.con-user-entry-label{
+    float: left;
+}
+
+.hidden{
+    display: none;
+}
+
+.concierge-user-profile-image{
+    width:100px !important;
+    height: 100px !important;
+}
+
+.bio-row-concierge {
+    width: 100%;
+    float: left;
+    padding:0 20px;
+}
+
+.bio-row-concierge p span {
+    width: 128px;
+    display: inline-block;
+}
+
+.bio-row-concierge p{
+    font-size: 14px;
+    color: #5D615D!important;
+}
+
+.concierge-user-points{
+    background-color: #D6CFE0;
+    border-radius: 18px;
+    height: 60px;
+    margin-top: 10px;
+}
+
+.change-promotion-visible{
+    box-shadow: 0px 0px 0px 2px #3FBABF !important;
+    height: 2em !important;
+    width: 2em !important;
+}
+
+.aligned-body{
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.swal2-show {
+    width: 22%!important;
+    height: fit-content !important;
+}
+
+.swal2-title{
+    font-size: 22px!important;
+    padding-top: 7px;
+}
+
+.swal2-html-container{
+    font-size: 15px !important;
+}
+
+.gray-font{
+    color: #9A9A9D;
+    font-size: 12px;
+}
+
+.concierge-home-button{
+    font-size: 8px;
+}
+
+.notification-row
+{
+    font-size: 14px !important;
+}
+
+.remove-icon{
+    background: none;
+    border: none;
+    color:  #BB2D3B !important;
+}
+
+.reset-password{
+    color: #3FBABF;
+    font-weight: bold;
+    cursor:pointer;
+
+}
+
+td {
+    font-size: 14px !important;
+    color: #838383;
+}
+
+.btn-payment{
+    width: 100px;
+    font-family: "ubuntu-regular", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #CD073C;
+    border: #CD073C;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-payment:hover {
+    color: #fff;
+    background-color: #CD073C;
+    border: #CD073C;
+    cursor: pointer;
+}
+
+.badge-danger
+{
+    background-color: #CD073C;
+}
+
+.btn-submit
+{
+    background-color: #3FBABF !important;
+    color: white !important;
+}
+

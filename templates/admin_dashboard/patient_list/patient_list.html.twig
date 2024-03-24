@@ -1,0 +1,91 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('patient_list') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            <div class="title-and-button">
+                <span class="title">Patients List</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a type="button" href="{{ path('ajax_save_patients_report') }}" class="trash-icon">
+                    <img class="img-fluid mt-2" src="{{ asset('nice-admin/assets/img/xlsx.png') }}"
+                         style="width: 45px;">
+                </a>
+            </div>
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-datatable table-responsive pt-0 m-2">
+                            <table class="datatables-basic table table-hover border-bottom"
+                                   id="table_patient_list">
+                                <thead>
+                                <tr class="text text-al">
+                                    <th class="col-md-2">Name</th>
+                                    <th class="col-md-2">User Id</th>
+                                    <th class="col-md-2">Gender</th>
+                                    <th class="col-md-1">DOB</th>
+                                    <th class="col-md-2">Email</th>
+                                    <th class="col-md-1">Contact No</th>
+                                    <th class="col-md-1 text-center">CreatedAt</th>
+                                    <th class="col-md-1 text-center">IsActive</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.firstName }} &nbsp; {{ user.lastName }}</td>
+                                        <td>
+                                            {{ user.userId }}
+                                        </td>
+                                        <td>
+                                            {{ user.gender }}
+                                        </td>
+                                        <td>
+
+                                            {% if user.dob %}
+                                                {{ user.dob.format('Y-m-d') }}
+                                            {% else %}
+
+                                                -
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {{ user.email }}
+                                        </td>
+                                        <td>
+                                            {{ user.contactNumber }}
+                                        </td>
+                                        <td class="text-center">
+                                            {% if user.createdAt %}
+                                                {{ user.createdAt.format('Y-m-d H:i:s') }}
+                                            {% else %}
+
+                                                -
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center">
+                                            {% if user.isActive == true %}
+                                                <label class="badge badge-info">Active</label>
+                                            {% endif %}
+                                            {% if not user.isActive %}
+                                                <label class="badge badge-success">InActive</label>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('patient_list') }}
+{% endblock %}

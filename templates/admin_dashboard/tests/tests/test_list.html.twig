@@ -1,0 +1,60 @@
+{% extends 'admin_dashboard/base/base_page.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('test') }}
+{% endblock %}
+{% block page_content %}
+    <div class="container-fluid">
+        <section class="section">
+            <div class="title-and-button">
+                <span class="title">Tests Details</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="contact-button add-new-test-category" href="{{ path('add_new_test') }}">
+                    <i class="fa fas fa-plus contact-button__icon"></i>
+                </a>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success pt-1 pb-1 pr-2 pl-2 m-0" role="alert" data-mdb-color="success">
+                        <i class="fas fa-check-circle me-3"></i>{{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row mt-2 body-content">
+                <div class="card">
+                    <div class="card-body aligned-body">
+                        <div class="card-datatable table-responsive pt-0 m-2">
+                            <table class="datatables-basic table table-hover border-bottom" id="table_test">
+                                <thead>
+                                <tr class="text text-al">
+                                    <th class="col col-sm-3">Name</th>
+                                    <th class="col col-sm-2">Category</th>
+                                    <th class="col col-sm-2">Price</th>
+                                    <th class="col col-sm-2">Processing Period</th>
+                                    <th class="col col-sm-1 text-center">Active/Inactive</th>
+                                    <th class="col col-sm-2 text-center">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('test') }}
+    <script>
+        let ajax_get_tests_list = "{{ path('ajax_get_tests_result') }}"
+        let edit_test_info = "{{ path('edit_test_info') }}"
+        let ajax_delete_test_records = "{{ path('ajax_delete_test_records') }}"
+        let ajax_change_test_isActive_status = "{{ path('ajax_change_test_isActive_status') }}"
+
+    </script>
+
+{% endblock %}
